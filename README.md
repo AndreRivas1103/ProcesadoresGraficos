@@ -2,6 +2,8 @@
 
 Sitio web sobre procesadores gráficos (GPUs): qué son, aplicaciones y empresas líderes.
 
+Pagina Web diseña por un proyecto universitario ahora dedicado a Proyecto personal.
+
 ## Contenido
 
 - **Página de inicio** (`index.html`): enlaces a la presentación en Canva y al sitio web.
