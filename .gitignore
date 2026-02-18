@@ -1,0 +1,29 @@
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Editores
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Logs y temporales
+*.log
+npm-debug.log*
+.cache/
+
+# Dependencias (si en el futuro usas npm)
+node_modules/
+
+# Build / salida (si usas herramientas de build)
+dist/
+build/
+*.min.css
+*.min.js
+
+# Variables de entorno (nunca subir claves)
+.env
+.env.local
+.env.*.local

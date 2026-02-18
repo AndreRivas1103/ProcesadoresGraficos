@@ -1,26 +1,304 @@
+/* Reset y variables CSS */
+:root {
+    --color-primary: #4CAF50;
+    --color-primary-hover: #45a049;
+    --color-primary-dark: #388e3c;
+    --color-secondary: #2196F3;
+    --color-secondary-hover: #1976d2;
+    --color-secondary-dark: #1565c0;
+    --color-background: #0a0a0a;
+    --color-background-gradient: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    --color-text: #ffffff;
+    --color-text-muted: #b0b0b0;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.4);
+    --shadow-glow-green: 0 0 20px rgba(76, 175, 80, 0.4);
+    --shadow-glow-blue: 0 0 20px rgba(33, 150, 243, 0.4);
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Screen reader only - para accesibilidad */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Body y estructura principal */
 body {
     margin: 0;
     padding: 0;
-    height: 100vh;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--color-background-gradient);
+    background-attachment: fixed;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    color: var(--color-text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Header */
+.main-header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+}
+
+/* Contenido principal */
+.main-content {
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #000000;
-    font-family: "Arial Black", sans-serif;
+    width: 100%;
+    padding: 2rem 1rem;
 }
 
-.contenedor {
+/* Navegación */
+.navigation {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    max-width: 800px;
+    width: 100%;
+}
+
+/* Botones mejorados */
+.boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1.25rem 2rem;
+    border-radius: 16px;
+    text-decoration: none;
+    color: var(--color-text);
+    font-weight: 600;
+    font-size: 1.125rem;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    margin: 0;
+    box-shadow: var(--shadow-md), var(--shadow-glow-green);
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+    min-width: 200px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transform: translateY(0);
+}
+
+/* Efecto de brillo animado */
+.boton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left var(--transition-slow);
+}
+
+.boton:hover::before {
+    left: 100%;
+}
+
+/* Botón izquierda (Canva) - Verde */
+.boton-izquierda {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    box-shadow: var(--shadow-md), var(--shadow-glow-green);
+}
+
+.boton-izquierda:hover {
+    background: linear-gradient(135deg, var(--color-primary-hover) 0%, var(--color-primary) 100%);
+    box-shadow: var(--shadow-lg), var(--shadow-glow-green);
+    transform: translateY(-4px) scale(1.02);
+}
+
+.boton-izquierda:active {
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: var(--shadow-md), var(--shadow-glow-green);
+}
+
+/* Botón derecha (Sitio Web) - Azul */
+.boton-derecha {
+    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-dark) 100%);
+    box-shadow: var(--shadow-md), var(--shadow-glow-blue);
+}
+
+.boton-derecha:hover {
+    background: linear-gradient(135deg, var(--color-secondary-hover) 0%, var(--color-secondary) 100%);
+    box-shadow: var(--shadow-lg), var(--shadow-glow-blue);
+    transform: translateY(-4px) scale(1.02);
+}
+
+.boton-derecha:active {
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: var(--shadow-md), var(--shadow-glow-blue);
+}
+
+/* Estados de focus para accesibilidad */
+.boton:focus {
+    outline: 3px solid rgba(255, 255, 255, 0.5);
+    outline-offset: 4px;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.boton:focus:not(:focus-visible) {
+    outline: none;
+    border-color: transparent;
+}
+
+.boton:focus-visible {
+    outline: 3px solid rgba(255, 255, 255, 0.8);
+    outline-offset: 4px;
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Iconos de botones */
+.boton-icono {
+    font-size: 1.5rem;
+    line-height: 1;
+    transition: transform var(--transition-normal);
+}
+
+.boton:hover .boton-icono {
+    transform: scale(1.15) rotate(5deg);
+}
+
+.boton-texto {
+    position: relative;
+    z-index: 1;
+}
+
+/* Footer */
+.main-footer {
+    width: 100%;
+    padding: 1.5rem;
+    text-align: center;
+    margin-top: auto;
+}
+
+.footer-text {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+    font-weight: 400;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navigation {
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+    
+    .boton {
+        width: 100%;
+        max-width: 300px;
+        padding: 1.125rem 1.75rem;
+        font-size: 1rem;
+        min-width: unset;
+    }
+    
+    .boton-icono {
+        font-size: 1.25rem;
+    }
+    
+    .main-content {
+        padding: 1.5rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .boton {
+        padding: 1rem 1.5rem;
+        font-size: 0.9375rem;
+        border-radius: 12px;
+    }
+    
+    .boton-icono {
+        font-size: 1.125rem;
+    }
+    
+    .main-content {
+        padding: 1rem 0.75rem;
+    }
+}
+
+/* Animación de entrada suave */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.navigation {
+    animation: fadeInUp 0.6s ease-out;
 }
 
 .boton {
-    display: inline-block;
-    padding: 15px 20px;
-    border-radius: 20%;
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    font-size: 16px;
-    background-color: #4CAF50; /* Verde */
-    margin: 0 10px; /* Espacio entre los botones */
+    animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.boton-izquierda {
+    animation-delay: 0.1s;
+}
+
+.boton-derecha {
+    animation-delay: 0.2s;
+}
+
+/* Prefers reduced motion - accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .boton::before {
+        display: none;
+    }
+}
+
+/* Modo de alto contraste para mejor accesibilidad */
+@media (prefers-contrast: high) {
+    .boton {
+        border-width: 3px;
+        border-color: var(--color-text);
+    }
+    
+    .boton:focus-visible {
+        outline-width: 4px;
+    }
 }
